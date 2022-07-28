@@ -26,7 +26,7 @@ geckodriver.log
 
 # allure-framework
 **/allure-report/
-**/allure-results/
+allure-results/
 **/reports/
 
 # Byte-compiled / optimized / DLL resources
