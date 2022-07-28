@@ -13,9 +13,10 @@ from utils.utils import resource, arrange_student_registration_form_opened
 
 def test_submit_automation_practice_form(setup_browser):
     browser = setup_browser
+    browser.open("https://demoqa.com/automation-practice-form")
 
-    with allure.step('Preconditions and open page for test'):
-        arrange_student_registration_form_opened()
+    # with allure.step('Preconditions and open page for test'):
+    #     arrange_student_registration_form_opened()
 
     with allure.step('Check page title'):
         browser.should(have.title('ToolsQA'))
