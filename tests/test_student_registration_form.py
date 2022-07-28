@@ -1,6 +1,5 @@
 import allure
 from selene import have, command
-from selene.support.shared import browser
 from selene.support.shared.jquery_style import s
 
 from qa_guru_python_10_jenkins.controls import set_hobbies
@@ -8,7 +7,6 @@ from qa_guru_python_10_jenkins.controls.datepicker import Datepicker
 from qa_guru_python_10_jenkins.controls.dropdown import Dropdown
 from qa_guru_python_10_jenkins.controls.table import Table
 from qa_guru_python_10_jenkins.controls.tags_input import TagsInput
-from utils import attach
 from utils.helpers import Student, Subjects, Hobbies
 from utils.utils import resource, arrange_student_registration_form_opened
 
