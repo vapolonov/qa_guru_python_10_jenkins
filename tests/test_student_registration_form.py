@@ -13,7 +13,9 @@ from utils.helpers import Student, Subjects, Hobbies
 from utils.utils import resource, arrange_student_registration_form_opened
 
 
-def test_submit_automation_practice_form():
+def test_submit_automation_practice_form(setup_browser):
+    browser = setup_browser
+
     with allure.step('Preconditions and open page for test'):
         arrange_student_registration_form_opened()
 
@@ -79,8 +81,3 @@ def test_submit_automation_practice_form():
         results.cell(8, 1).should(have.text('picture.png'))
         results.cell(9, 1).should(have.text(Student.address))
         results.cell(10, 1).should(have.text(f'{Student.state} {Student.city}'))
-
-    attach.add_html(browser)
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    # attach.add_video(browser)
