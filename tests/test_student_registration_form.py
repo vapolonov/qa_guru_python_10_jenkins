@@ -11,8 +11,8 @@ from utils.helpers import Student, Subjects, Hobbies
 from utils.utils import resource, arrange_student_registration_form_opened
 
 
-def test_submit_automation_practice_form(setup_chrome):
-    browser = setup_chrome
+def test_submit_automation_practice_form(setup_browser):
+    browser = setup_browser
 
     with allure.step('Open page for test'):
         arrange_student_registration_form_opened()

@@ -17,15 +17,23 @@ from utils import attach
 #     browser.config.window_width = 1920
 #     browser.config.window_height = 1920
 
+def pytest_addoption(parser):
+    parser.addoption(
+        '--browser_version',
+        default='100.0'
+    )
+
+
 @pytest.fixture(scope='function')
-def setup_chrome():
+def setup_browser(request):
     browser.config.base_url = 'https://demoqa.com'
     browser.config.window_width = 1920
     browser.config.window_height = 1090
+    browser_version = request.config.getoption('--browser_version')
     options = Options()
     selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "100.0",
+        "browserName": 'chrome',
+        "browserVersion": "99",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
