@@ -14,7 +14,7 @@ def resource(path):
 
 
 def arrange_student_registration_form_opened():
-    browser.open('https://demoqa.com/automation-practice-form')
-    browser.all('[id^=google_ads][id$=container__],[id$=Advertisement]').with_(timeout=10)\
-        .should(have.size_less_than_or_equal(2))\
-        .perform(command.js.remove)
+    browser.open('/automation-practice-form')
+    # browser.all('[id^=google_ads][id$=container__],[id$=Advertisement]').with_(timeout=10)\
+    #     .should(have.size_less_than_or_equal(2))\
+    #     .perform(command.js.remove)

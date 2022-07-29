@@ -1,5 +1,6 @@
 import allure
 from selene import have, command
+from selene.support.shared import browser
 from selene.support.shared.jquery_style import s
 
 from qa_guru_python_10_jenkins.controls import set_hobbies
@@ -9,14 +10,30 @@ from qa_guru_python_10_jenkins.controls.table import Table
 from qa_guru_python_10_jenkins.controls.tags_input import TagsInput
 from utils.helpers import Student, Subjects, Hobbies
 from utils.utils import resource, arrange_student_registration_form_opened
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
-def test_submit_automation_practice_form(setup_browser):
-    browser = setup_browser
-    browser.open("https://demoqa.com/automation-practice-form")
+def test_submit_automation_practice_form():
+    options = Options()
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "100.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": False
+        }
+    }
+    options.capabilities.update(selenoid_capabilities)
 
-    # with allure.step('Preconditions and open page for test'):
-    #     arrange_student_registration_form_opened()
+    driver = webdriver.Remote(
+        command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
+        options=options)
+
+    browser.config.driver = driver
+
+    with allure.step('Preconditions and open page for test'):
+        arrange_student_registration_form_opened()
 
     with allure.step('Check page title'):
         browser.should(have.title('ToolsQA'))
