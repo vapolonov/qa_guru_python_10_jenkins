@@ -62,7 +62,7 @@ def test_submit_automation_practice_form(setup_browser):
 
     with allure.step('Select state and city'):
         set_state_city = Dropdown(s('#state'), s('#city'))
-        set_state_city.select(state_data=Student.state)
+        set_state_city._select(state_data=Student.state)
         set_state_city.autocomplete(city_data=Student.city)
 
     with allure.step('Send the form'):

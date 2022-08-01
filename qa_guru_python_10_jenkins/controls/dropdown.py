@@ -9,9 +9,11 @@ class Dropdown:
         self.city = city
 
     def select(self, state_data: str):
-        s('#submit').perform(command.js.scroll_into_view)
-        self.state.click()
+        self.state.perform(command.js.scroll_into_view).click()
         s(by.text(state_data)).click()
+
+    def _select(self, state_data: str):
+        self.state.s('#react-select-3-input').type(state_data).press_tab()
 
     def autocomplete(self, city_data: str):
         self.city.s('#react-select-4-input').type(city_data).press_tab()
