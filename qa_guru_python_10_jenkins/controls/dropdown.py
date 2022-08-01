@@ -9,7 +9,8 @@ class Dropdown:
         self.city = city
 
     def select(self, state_data: str):
-        self.state.perform(command.js.scroll_into_view).click()
+        s('#submit').perform(command.js.scroll_into_view)
+        self.state.click()
         s(by.text(state_data)).click()
 
     def autocomplete(self, city_data: str):
