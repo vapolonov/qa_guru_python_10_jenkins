@@ -6,16 +6,8 @@ from selenium.webdriver.chrome.options import Options
 
 from utils import attach
 
-# DEFAULT_BROWSER_VERSION = "100.0"
+DEFAULT_BROWSER_VERSION = "100.0"
 
-
-# @pytest.fixture(scope='function', autouse=True)
-# def browser_management():
-#     browser.config.base_url = 'https://demoqa.com'
-#     browser.config.browser_name = 'chrome'
-#     browser.config.timeout = 3
-#     browser.config.window_width = 1920
-#     browser.config.window_height = 1920
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -30,10 +22,11 @@ def setup_browser(request):
     browser.config.window_width = 1920
     browser.config.window_height = 1090
     browser_version = request.config.getoption('--browser_version')
+    browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     options = Options()
     selenoid_capabilities = {
         "browserName": 'chrome',
-        "browserVersion": "99",
+        "browserVersion": browser_version,
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True
@@ -55,3 +48,5 @@ def setup_browser(request):
     attach.add_screenshot(browser)
     attach.add_logs(browser)
     attach.add_video(browser)
+    browser.quit()
+
