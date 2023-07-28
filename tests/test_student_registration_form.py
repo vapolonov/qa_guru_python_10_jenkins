@@ -19,7 +19,7 @@ def test_submit_automation_practice_form(setup_browser):
         # browser.open('https://demoqa.com/automation-practice-form')
 
     with allure.step('Check page title'):
-        browser.should(have.title('ToolsQA'))
+        browser.should(have.title('DEMOQA'))
 
     with allure.step('Check page header'):
         s('.main-header').should(have.exact_text('Practice Form'))
